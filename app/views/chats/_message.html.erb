@@ -1,9 +1,26 @@
-<% chats.each do |chat| %>
-  <% if chat.user_id == current_user.id %>
-    <%= chat.message %>
-  <% else %>
-    <%= chat.user.name %>
-    <%= chat.message %>
-  <% end %>
-<% end %>
+<div class="bd-highlight mt-4 mb-3">
+  <% chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
 
+    <div class="text-right">
+      <div class="d-flex">
+        <div class="ml-auto">
+          <%= my_name %>
+          <%= image_tag current_user.get_profile_image(50,50) %>
+        </div>
+      </div>
+
+      <div class="p-2 d-flex">
+        <div class="rounded-lg bg-info ml-auto h4"><%= chat.message %><br></div>
+      </div>
+    </div>
+
+    <% else %>
+      <%= image_tag user.get_profile_image(50,50) %>
+      <%= chat.user.name %>さん
+      <div class="p-2 d-flex">
+        <div class="rounded-lg bg-light h4"><%= chat.message %><br></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

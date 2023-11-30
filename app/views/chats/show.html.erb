@@ -1,13 +1,15 @@
-<h2><%= @user.name %> さんとのチャット</h2>
-<div class="message">
-  <%= render "message", chats: @chats %>
-</div>
-
-<%= form_with model: @chat, data: {remote: true} do |f| %>
-  <div class="errors">
-    <%= render "layouts/errors", obj: f.object %>
+<div class="container">
+  <h2><%= @user.name %> さんとのチャット</h2>
+  <div class="message">
+    <%= render "chats/message", chats: @chats, user: @user, my_name: @my_name %>
   </div>
-  <%= f.text_field :message, placeholder: "メッセージを入力してください", autocomplete: "off" %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <%= f.submit "送信" %>
-<% end %>
+  
+  <%= form_with model: @chat, data: {remote: true} do |f| %>
+    <div class="errors">
+      <%= render "layouts/errors", obj: f.object %>
+    </div>
+    <%= f.text_field :message, placeholder: "メッセージを入力してください", autocomplete: "off" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
