@@ -4,7 +4,7 @@
 (例: SNS系のブランチには7aと8aと9aの機能を実装)
 
 ## ブランチ名
-SNS系  feature_sns
-記録系  feature_log
-コミュニティ系  feature_community
-レビュー系  feature_review
+- SNS系　-　feature_sns
+- 記録系　-　feature_log
+- コミュニティ系　-　feature_community
+- レビュー系　-　feature_review
