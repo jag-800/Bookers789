@@ -1,4 +1,4 @@
-<div class='container px-5 px-sm-0', id="books_container">
+<div class='container px-5 px-sm-0'>
   <%= render 'layouts/errors', obj: @book %>
   <div class='row'>
     <div class='col-md-3'>
@@ -9,7 +9,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
-      <p>
+      <p id="books_container">
         <%= link_to "新しい順", books_path(latest: "true"), remote: true  %>
         |<%= link_to "評価の高い順", books_path(star_count: "true"), remote: true  %>
       </p>
