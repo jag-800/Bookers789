@@ -52,17 +52,10 @@ ActiveRecord::Schema.define(version: 2023_12_06_085437) do
     t.string "title"
     t.text "body"
     t.integer "user_id"
+    t.string "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "star"
-  end
-
-  create_table "chats", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
-    t.text "message"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -72,38 +65,9 @@ ActiveRecord::Schema.define(version: 2023_12_06_085437) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "group_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_group_users_on_group_id"
-    t.index ["user_id"], name: "index_group_users_on_user_id"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string "name"
-    t.text "introduction"
-    t.integer "owner_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rooms", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_rooms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -120,13 +84,6 @@ ActiveRecord::Schema.define(version: 2023_12_06_085437) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "view_counts", force: :cascade do |t|
-    t.integer "book_id"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

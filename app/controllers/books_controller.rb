@@ -44,11 +44,19 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
+  
+  def tag
+    @tag = params[:tag]
+
+    if @tag.presents?
+      @books = Book.looks(params[:tag])
+    end
+  end
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star)
+    params.require(:book).permit(:title, :body, :star, :tag)
   end
 
   def ensure_correct_user
